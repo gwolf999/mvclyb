@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>简易留言本</title>
+<script language="javascript">
+
+function check_form()
+{
+  if (!document.form1.username.value)
+  {
+    alert("用户名不能为空！");
+	return false;
+  }
+  
+  if (!test_email(document.form1.email.value))
+  {
+     alert("电子邮箱格式不正确！");
+	 return false;
+  }
+ 
+}
+
+function test_email(str_email)
+{
+  var pattern=/^[a-zA-Z0-9_.]+@([a-zA-Z0-9_]+.)+[a-zA-Z]{2,3}$/;
+  if (pattern.test(str_email))
+     return true;
+  else
+     return false;
+}
+
+</script>
+
+
+</head>
+
+<body leftmargin="50px">
+<form id="form1" name="form1" method="post" action="index.php?action=post" onsubmit="return check_form();">
+  <p>用户名：</p>
+  <p>
+    <input type="text" name="username" />
+    <font color="#FF0000">*  </font></p>
+  <p>电子邮件：</p>
+  <p>
+    <input type="text" name="email" />
+    <font color="#FF0000">*</font></p>
+  <p>留言内容：</p>
+  <p>
+    <textarea name="content" cols="60" rows="5"></textarea>
+</p>
+  <p>
+    <input type="submit" name="Submit" value="提交" />
+
+  </p>
+</form>
+</body>
+</html>
